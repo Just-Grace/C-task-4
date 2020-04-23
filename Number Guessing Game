@@ -1,0 +1,105 @@
+using System;
+
+namespace numberGuessingGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int level = 0;
+            Console.WriteLine("Welcome to Number Guessing Game");
+            Console.WriteLine("Please select a difficulty level: \n1. Easy \n2. Medium \n3. Hard");
+            Console.Write("Difficulty Level: ");
+            level = int.Parse(Console.ReadLine());
+           
+            Random random = new Random();
+            int randomNumberEasy = random.Next(1, 11);
+            int guess;
+            int trialEasy = 5;
+            bool gameOver = false;
+            int randomNumberMedium = random.Next(1, 21);
+            int trialMedium = 3;
+            int randomNumberHard = random.Next(1, 51);
+            int trialHard = 2; 
+            
+              
+
+            if (level == 1)
+            {
+                Console.Write("Guess a number between 1 to 10, you have 6 guesses remaining: ");
+              guess = int.Parse(Console.ReadLine());
+                while (gameOver == false && trialEasy > 0)
+                {
+                  Console.Write("That was wrong. Try again, you have " + trialEasy + " trial(s) remaining.: ");
+                  guess = int.Parse(Console.ReadLine());
+                  trialEasy--;
+                }
+                if (guess!= randomNumberEasy && trialEasy == 0)
+                {
+                    Console.WriteLine("Game Over.");
+                    gameOver = true;
+                }
+                else if (guess == randomNumberEasy )
+                {
+                    Console.WriteLine("You are right!");
+                    gameOver = true;
+                }
+            }
+
+            else if (level == 2)
+            {
+                Console.Write("Guess a number between 1 to 20, you have 4 guesses remaining: ");
+                guess  = int.Parse(Console.ReadLine());
+                
+                while (gameOver == false && trialMedium > 0)
+                {
+                  Console.Write("That was wrong. Try again, you have " + trialMedium + " trial(s) remaining: ");
+                  guess = int.Parse(Console.ReadLine());
+                 trialMedium--;
+
+                 if (guess != randomNumberMedium && trialMedium == 0)
+                 {
+                    Console.WriteLine("Game Over!");
+                    gameOver = true;
+                 }
+                 else if (guess == randomNumberMedium)
+                 {
+                    Console.WriteLine("You are right!");
+                    gameOver = true;
+                 }
+                }
+
+            }
+            else if (level == 3)
+            {
+                Console.Write("Guess a number between 1 to 50, you have 3 guesses remaining: ");
+              guess  = int.Parse(Console.ReadLine());
+
+              while (gameOver == false && trialHard > 0)
+              {
+                Console.Write("That was wrong. Try again, you have " + trialHard + " trial(s) remaining: ");
+                guess = int.Parse(Console.ReadLine());
+                trialHard--;
+
+                if (guess != randomNumberHard && trialHard == 0)
+                {
+                    Console.WriteLine("Game over.");
+                    gameOver = true;
+                }
+                else if (guess == randomNumberHard)
+                {
+                    Console.WriteLine("You are right!");
+                    gameOver = true; 
+                }
+               
+              }
+            }
+            
+          
+            
+
+
+
+        }
+    }
+}
